@@ -5,7 +5,7 @@ This is Star Wars API. You can do CRUD operations on characters from Star Wars.
 API documentation address: http://localhost:3000/api/
 ## Installation
 
-At the beginnings make sure your mongoDb is up and running. Please read README in mongoDb folder.
+At the beginnings make sure your mongoDB is up and running. Please read README in mongoDB folder.
 
 ```bash
 $ npm install
