@@ -1,0 +1,1 @@
+In these two folders is everything you need to test star wars API. Please read REAMDE.md in these folders.
