@@ -1,9 +1,8 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException, PipeTransform } from '@nestjs/common';
 import { Types } from 'mongoose';
-import { IValidateObjectIdPipe } from './IValidateObjectIdPipe';
 
 @Injectable()
-export class ValidateObjectIdPipe implements IValidateObjectIdPipe {
+export class ValidateObjectIdPipe implements PipeTransform<any, string> {
     transform(value: any): string {
         const validObjectId = Types.ObjectId.isValid(value);
 
