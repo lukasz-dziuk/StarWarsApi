@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Inject, Param, Patch, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Inject, Param, Patch, Post, Query, UsePipes } from "@nestjs/common";
 import { ApiBadRequestResponse, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { GetCharacterListRequestDto } from "../dtos/GetCharacterListRequest.dto";
 import { InsertCharacterRequestDto } from "../dtos/InsertCharacterRequest.dto";
@@ -16,6 +16,7 @@ import { ICharacter } from "../interfaces/ICharacter";
 import { ICharacterDtoMapper } from "../dtoMappers/character/ICharacterDtoMapper";
 import { IPagination } from "../interfaces/IPagination";
 import { GetCharactersFilter } from "../queryFilters/getCharactersFilter";
+import { DefaultPaginationOptionsPipe } from "../../common/transformPipes/DefaultPaginationOptionsPipe";
 
 @ApiTags('StarWars')
 @Controller('character')
@@ -26,13 +27,14 @@ export class CharacterController {
 
     @ApiOkResponse({ description: 'Character list has been successfully returned.', type: GetCharacterListResponseDto })
     @ApiBadRequestResponse({ description: 'Invalid Request', type: GetCharacterResponseDto })
+    @UsePipes(new DefaultPaginationOptionsPipe())
     @Get()
     public async getCharacterList(
         @Query() getCharacterListRequestDto: GetCharacterListRequestDto,
     ): Promise<GetCharacterListResponseDto> {
         const IPaginationOptions: IPaginationOptions = {
-            limit: getCharacterListRequestDto.limit ?? 10,
-            page: getCharacterListRequestDto.page ?? 1
+            limit: getCharacterListRequestDto.limit,
+            page: getCharacterListRequestDto.page
         }
 
         const getCharactersFilter: GetCharactersFilter = {

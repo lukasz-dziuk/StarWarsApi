@@ -7,7 +7,8 @@ export class GetCharacterListRequestDto {
     @ApiPropertyOptional({
         type: Number,
         description: 'The limit of results per page',
-        minimum: 1
+        minimum: 1,
+        default: 10
     })
     @IsOptional()
     @Min(1)
@@ -18,7 +19,8 @@ export class GetCharacterListRequestDto {
     @ApiPropertyOptional({
         type: Number,
         description: 'Page number',
-        minimum: 1
+        minimum: 1,
+        default: 1
     })
     @IsOptional()
     @IsNumber()
