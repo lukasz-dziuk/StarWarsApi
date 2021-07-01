@@ -29,6 +29,7 @@ const characterTwo: ICharacterInsertModel = {
 describe('CharacterController (e2e)', () => {
   let app: INestApplication;
   let characterModel: Model<ICharacterDocument>;
+
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [StarWarsAppModule.forRoot(true)],

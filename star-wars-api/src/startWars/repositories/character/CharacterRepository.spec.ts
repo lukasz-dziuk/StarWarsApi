@@ -118,7 +118,6 @@ describe('CharacterRepository', () => {
             episodes: [EpisodesEnum.A_NEW_HOPE, EpisodesEnum.ATTACK_OF_THE_CLONES],
             planet: 'Akiva'
         }]
-
         const characterDocumentsResult: ICharacterDocument[] = (characterResults as unknown) as ICharacterDocument[]
         const mappedPaginatedResponseData: IPagination<ICharacter> = {
             data: characterResults,
@@ -129,7 +128,6 @@ describe('CharacterRepository', () => {
             hasNextPage: false,
             totalItems: 2,
         }
-
         const paginateResult: IPagination<ICharacterDocument> = {
             ...mappedPaginatedResponseData,
             data: characterDocumentsResult,
@@ -156,7 +154,8 @@ describe('CharacterRepository', () => {
             jest.spyOn(characterRepositoryModel, 'limit').mockReturnValueOnce(characterDocumentsResult);
             jest.spyOn(characterRepository, 'paginate').mockResolvedValueOnce(paginateResult);
 
-            const results: IPagination<ICharacter> = await characterRepository.getCharacters(paginationOptions, getCharactersFilter);
+            const results: IPagination<ICharacter> =
+                await characterRepository.getCharacters(paginationOptions, getCharactersFilter);
 
             expect(results)
                 .toEqual(paginateResult);
@@ -200,6 +199,7 @@ describe('CharacterRepository', () => {
             jest.spyOn(characterRepositoryModel, 'create').mockResolvedValueOnce(characterDocument)
 
             const newCharacterId: string = await characterRepository.insertCharacter(characterInsertModel)
+
             expect(newCharacterId).toEqual(characterId)
         });
     });
@@ -209,6 +209,7 @@ describe('CharacterRepository', () => {
 
         it('characterRepositoryModel.deleteOne shold be called with valid data', async () => {
             await characterRepository.deleteCharacter(characterId)
+
             expect(characterRepositoryModel.deleteOne).toBeCalledWith({ _id: characterId })
         });
     });

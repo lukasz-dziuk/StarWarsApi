@@ -5,7 +5,7 @@ import { StarWarsAppModule } from './startWars/startWarsApp.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(StarWarsAppModule.forRoot(false))
-  app.useGlobalPipes(new ValidationPipe({ transform: true, transformOptions: { enableImplicitConversion: true } }))
+  app.useGlobalPipes(new ValidationPipe({ transform: true }))
   app.setGlobalPrefix('starWars')
 
   const swaggerConfig = new DocumentBuilder()
