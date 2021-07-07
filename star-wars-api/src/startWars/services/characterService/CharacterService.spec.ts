@@ -13,8 +13,9 @@ import { ICharacterService } from "./ICharacterService";
 describe('CharacterService', () => {
     let characterService: ICharacterService
     let characterRepository: ICharacterRepository
+
     beforeEach(async () => {
-        jest.resetAllMocks();
+        jest.resetAllMocks()
 
         const mockModule: TestingModule = await Test.createTestingModule(
             {
@@ -29,13 +30,15 @@ describe('CharacterService', () => {
                     },
                 ],
             },
-        ).compile();
+        ).compile()
 
-        characterService = mockModule.get(injectToken.services.ICharacterService);
-        characterRepository = mockModule.get(injectToken.repositories.ICharacterRepository);
+        characterService = mockModule.get(injectToken.services.ICharacterService)
+        characterRepository = mockModule.get(injectToken.repositories.ICharacterRepository)
     });
+
     describe('getCharacters', () => {
         const characterId: string = '60dc4b85ca59964044f14eb8'
+
         it('characterRepository.getCharacters shold be called with valid data', async () => {
             const paginationOptions: IPaginationOptions = {
                 limit: 5,
@@ -48,15 +51,15 @@ describe('CharacterService', () => {
                     EpisodesEnum.REVENGE_OF_THE_SITH],
                 planet: 'Anaxes'
             }
-            await characterService.getCharacters(paginationOptions, getCharactersFilter);
+            await characterService.getCharacters(paginationOptions, getCharactersFilter)
 
-            expect(characterRepository.getCharacters).toBeCalledWith(paginationOptions, getCharactersFilter);
+            expect(characterRepository.getCharacters).toBeCalledWith(paginationOptions, getCharactersFilter)
         });
 
         it('characterRepository.getCharacterById shold be called with valid data', async () => {
             await characterService.getCharacterById(characterId);
 
-            expect(characterRepository.getCharacterById).toBeCalledWith(characterId);
+            expect(characterRepository.getCharacterById).toBeCalledWith(characterId)
         });
 
         it('characterRepository.updateCharacter shold be called with valid data', async () => {
@@ -67,9 +70,9 @@ describe('CharacterService', () => {
                     EpisodesEnum.REVENGE_OF_THE_SITH],
                 planet: 'Anoat'
             }
-            await characterService.updateCharacter(characterUpdatetModel, characterId);
+            await characterService.updateCharacter(characterUpdatetModel, characterId)
 
-            expect(characterRepository.updateCharacter).toBeCalledWith(characterUpdatetModel, characterId);
+            expect(characterRepository.updateCharacter).toBeCalledWith(characterUpdatetModel, characterId)
         });
 
         it('characterRepository.insertCharacter shold be called with valid data', async () => {
@@ -79,15 +82,15 @@ describe('CharacterService', () => {
                     EpisodesEnum.A_NEW_HOPE,
                     EpisodesEnum.THE_LAST_JEDI],
             }
-            await characterService.insertCharacter(characterInsertModel);
+            await characterService.insertCharacter(characterInsertModel)
 
-            expect(characterRepository.insertCharacter).toBeCalledWith(characterInsertModel);
+            expect(characterRepository.insertCharacter).toBeCalledWith(characterInsertModel)
         });
 
         it('characterRepository.deleteCharacter shold be called with valid data', async () => {
             await characterService.deleteCharacter(characterId);
 
-            expect(characterRepository.deleteCharacter).toBeCalledWith(characterId);
+            expect(characterRepository.deleteCharacter).toBeCalledWith(characterId)
         });
     });
 });

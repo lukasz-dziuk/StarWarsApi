@@ -96,6 +96,7 @@ describe('CharacterController (e2e)', () => {
   });
 
   describe('/character/:id (GET)', () => {
+
     it('/character/:id (GET) should return characterOne', () => {
       const characterOne: ICharacter = {
         id: characterOneId,
@@ -127,6 +128,7 @@ describe('CharacterController (e2e)', () => {
   });
 
   describe('/character (POST)', () => {
+
     it('/character (POST) should return status 400 when validation failed', () => {
       const invalidNewCharacterRequestBody: any = {
         name: 123,
@@ -226,7 +228,9 @@ describe('CharacterController (e2e)', () => {
       return done()
     });
   });
+
   describe('/character/:id (DELETE)', () => {
+
     it('/character/:id (DELETE) should return status 400 when id is invalid', () => {
       const wrongId: string = 'WRONG_ID'
 

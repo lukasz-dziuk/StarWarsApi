@@ -18,24 +18,24 @@ export class CharacterService implements ICharacterService {
     ) { }
 
     public async getCharacters(paginationOptions: IPaginationOptions, filter?: GetCharactersFilter): Promise<IPagination<ICharacter>> {
-        return this._characterRepository.getCharacters(paginationOptions, filter);
+        return this._characterRepository.getCharacters(paginationOptions, filter)
     }
 
     public async getCharacterById(characterId: string): Promise<ICharacter> {
         const character: ICharacter | null = await this._characterRepository.getCharacterById(characterId)
 
-        return character;
+        return character
     }
 
     public async updateCharacter(character: ICharacterUpdatetModel, characterId: string): Promise<void> {
-        await this._characterRepository.updateCharacter(character, characterId);
+        await this._characterRepository.updateCharacter(character, characterId)
     }
 
     public async insertCharacter(character: ICharacterInsertModel): Promise<string> {
-        return await this._characterRepository.insertCharacter(character);
+        return await this._characterRepository.insertCharacter(character)
     }
 
     public async deleteCharacter(characterId: string): Promise<void> {
-        await this._characterRepository.deleteCharacter(characterId);
+        await this._characterRepository.deleteCharacter(characterId)
     }
 }

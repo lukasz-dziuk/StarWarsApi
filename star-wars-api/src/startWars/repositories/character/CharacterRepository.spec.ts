@@ -146,6 +146,7 @@ describe('CharacterRepository', () => {
             expect(characterRepository.paginate)
                 .toBeCalledWith(characterRepositoryModel, paginationOptions, mappedGetCharactersFilter);
         });
+
         it('characterRepository.getCharacters shold return valid data', async () => {
             jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel);
             jest.spyOn(characterRepositoryModel, 'countDocuments').mockResolvedValueOnce(1);
@@ -161,6 +162,7 @@ describe('CharacterRepository', () => {
                 .toEqual(paginateResult);
         });
     });
+
     describe('updateCharacter', () => {
         const characterUpdatetModel: ICharacterUpdatetModel = {
             name: 'Luke',

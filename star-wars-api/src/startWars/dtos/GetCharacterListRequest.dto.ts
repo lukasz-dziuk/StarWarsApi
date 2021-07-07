@@ -14,7 +14,7 @@ export class GetCharacterListRequestDto {
     @Min(1)
     @IsNumber()
     @Type(() => Number)
-    readonly limit: number;
+    readonly limit: number
 
     @ApiPropertyOptional({
         type: Number,
@@ -26,7 +26,7 @@ export class GetCharacterListRequestDto {
     @IsNumber()
     @Min(1)
     @Type(() => Number)
-    readonly page: number;
+    readonly page: number
 
     @ApiPropertyOptional({
         type: String,
@@ -35,7 +35,7 @@ export class GetCharacterListRequestDto {
     })
     @IsString()
     @IsOptional()
-    readonly name?: string;
+    readonly name?: string
 
     @ApiPropertyOptional({
         enum: EpisodesEnum,
@@ -48,7 +48,7 @@ export class GetCharacterListRequestDto {
     @IsOptional()
     @IsEnum(EpisodesEnum, { each: true })
     @Type(() => String)
-    readonly episodes?: EpisodesEnum[];
+    readonly episodes?: EpisodesEnum[]
 
     @ApiPropertyOptional({
         type: String,
@@ -57,5 +57,5 @@ export class GetCharacterListRequestDto {
     })
     @IsString()
     @IsOptional()
-    readonly planet?: string;
+    readonly planet?: string
 }

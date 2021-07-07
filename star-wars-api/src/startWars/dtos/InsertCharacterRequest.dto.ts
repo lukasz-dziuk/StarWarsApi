@@ -9,7 +9,7 @@ export class InsertCharacterRequestDto {
         example: 'Luke'
     })
     @IsString()
-    readonly name: string;
+    readonly name: string
 
     @ApiProperty({
         enum: EpisodesEnum,
@@ -20,7 +20,7 @@ export class InsertCharacterRequestDto {
     })
     @IsArray()
     @IsEnum(EpisodesEnum, { each: true })
-    readonly episodes: EpisodesEnum[];
+    readonly episodes: EpisodesEnum[]
 
     @ApiPropertyOptional({
         type: String,
@@ -29,5 +29,5 @@ export class InsertCharacterRequestDto {
     })
     @IsString()
     @IsOptional()
-    readonly planet?: string;
+    readonly planet?: string
 }

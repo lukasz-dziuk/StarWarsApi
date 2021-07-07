@@ -7,14 +7,14 @@ export class GetCharacterResponseDto {
         description: 'Character id',
         example: '60d86a24dd13163b00e580c9'
     })
-    readonly id: string;
+    readonly id: string
 
     @ApiProperty({
         type: String,
         description: 'Character name',
         example: 'Luke'
     })
-    readonly name: string;
+    readonly name: string
 
     @ApiProperty({
         enum: EpisodesEnum,
@@ -23,12 +23,12 @@ export class GetCharacterResponseDto {
         description: 'Episodes where character appears',
         example: ['A_NEW_HOPE', 'THE_EMPIRE_STRIKES_BACK']
     })
-    readonly episodes: EpisodesEnum[];
+    readonly episodes: EpisodesEnum[]
 
     @ApiPropertyOptional({
         type: String,
         description: 'Planet where character comes from',
         example: 'Agamar'
     })
-    readonly planet?: string;
+    readonly planet?: string
 }

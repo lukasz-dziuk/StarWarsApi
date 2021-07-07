@@ -10,7 +10,7 @@ export class UpdateCharacterRequestDto {
     })
     @IsString()
     @IsOptional()
-    readonly name?: string;
+    readonly name?: string
 
     @ApiPropertyOptional({
         enum: EpisodesEnum,
@@ -22,7 +22,7 @@ export class UpdateCharacterRequestDto {
     @IsArray()
     @IsOptional()
     @IsEnum(EpisodesEnum, { each: true })
-    readonly episodes?: EpisodesEnum[];
+    readonly episodes?: EpisodesEnum[]
 
     @ApiPropertyOptional({
         type: String,
@@ -31,5 +31,5 @@ export class UpdateCharacterRequestDto {
     })
     @IsString()
     @IsOptional()
-    readonly planet?: string;
+    readonly planet?: string
 }

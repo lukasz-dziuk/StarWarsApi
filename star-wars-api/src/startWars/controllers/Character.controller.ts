@@ -44,9 +44,9 @@ export class CharacterController {
         }
 
         const paginatedCharacters: IPagination<ICharacter> =
-            await this._characterService.getCharacters(IPaginationOptions, getCharactersFilter);
+            await this._characterService.getCharacters(IPaginationOptions, getCharactersFilter)
 
-        return this._characterDtoMapper.mapGetCharacterListResponseDto(paginatedCharacters);
+        return this._characterDtoMapper.mapGetCharacterListResponseDto(paginatedCharacters)
     }
 
     @ApiOkResponse({ description: 'Character list has been successfully returned.', type: GetCharacterResponseDto })

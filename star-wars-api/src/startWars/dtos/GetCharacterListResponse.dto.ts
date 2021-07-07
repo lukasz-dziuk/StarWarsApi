@@ -34,40 +34,40 @@ export class GetCharacterListResponseDto {
         description: 'The Page number',
         example: 1
     })
-    readonly page: number;
+    readonly page: number
 
     @ApiProperty({
         type: Number,
         description: 'The limit of results per page',
         example: 10
     })
-    readonly limit: number;
+    readonly limit: number
 
     @ApiProperty({
         type: Number,
         description: 'The Last page',
         example: 1
     })
-    readonly lastPage: number;
+    readonly lastPage: number
 
     @ApiProperty({
         type: Boolean,
         description: 'The flag for checking if the list has a previous page',
         example: false
     })
-    readonly hasPrevPage: boolean;
+    readonly hasPrevPage: boolean
 
     @ApiProperty({
         type: Boolean,
         description: 'The flag for checking if the list has a next page',
         example: false
     })
-    readonly hasNextPage: boolean;
+    readonly hasNextPage: boolean
 
     @ApiProperty({
         type: Boolean,
         description: 'Total number of items of the list',
         example: 2
     })
-    readonly totalItems: number;
+    readonly totalItems: number
 }

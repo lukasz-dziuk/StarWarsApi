@@ -8,9 +8,9 @@ export abstract class RepositoryBase<TDocument extends Document> implements IRep
         model: RepositoryModel<TDocument>,
         paginationOptions: IPaginationOptions,
         findConditions?: FilterQuery<TDocument>): Promise<IPagination<TDocument>> {
-        const totalResultsCount: number = await model.find(findConditions).countDocuments();
-        const { limit, page } = paginationOptions;
-        const offset: number = (page - 1) * limit;
+        const totalResultsCount: number = await model.find(findConditions).countDocuments()
+        const { limit, page } = paginationOptions
+        const offset: number = (page - 1) * limit
         const lastPage: number = this.calculateLastPage(totalResultsCount, limit)
         const results: TDocument[] = await model
             .find(findConditions)
@@ -25,7 +25,7 @@ export abstract class RepositoryBase<TDocument extends Document> implements IRep
             hasPrevPage: page > 1,
             hasNextPage: lastPage > page,
             totalItems: totalResultsCount,
-        };
+        }
     }
 
     private calculateLastPage(totalResultsCount: number, limit: number) {
