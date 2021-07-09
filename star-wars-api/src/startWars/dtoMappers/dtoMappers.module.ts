@@ -1,6 +1,6 @@
-import { ClassProvider, Module } from "@nestjs/common";
-import { injectToken } from "../injectToken";
-import { CharacterDtoMapper } from "./character/CharacterDtoMapper";
+import { ClassProvider, Module } from "@nestjs/common"
+import { injectToken } from "../injectToken"
+import { CharacterDtoMapper } from "./character/CharacterDtoMapper"
 
 
 const providers: ClassProvider[] = [

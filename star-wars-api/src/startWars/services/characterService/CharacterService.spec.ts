@@ -1,14 +1,14 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { ICharacterInsertModel } from "src/startWars/interfaces/ICharacterInsertModel";
-import { ICharacterUpdatetModel } from "src/startWars/interfaces/ICharacterUpdateModel";
-import { EpisodesEnum } from "../../enums/episodes.enum";
-import { injectToken } from "../../injectToken";
-import { IPaginationOptions } from "../../interfaces/IPaginationOptions";
-import { GetCharactersFilter } from "../../queryFilters/getCharactersFilter";
-import { CharacterRepositoryMock } from "../../repositories/character/CharacterRepository.mock";
-import { ICharacterRepository } from "../../repositories/character/ICharacterRepository";
-import { CharacterService } from "./CharacterService";
-import { ICharacterService } from "./ICharacterService";
+import { Test, TestingModule } from "@nestjs/testing"
+import { ICharacterInsertModel } from "src/startWars/interfaces/ICharacterInsertModel"
+import { ICharacterUpdatetModel } from "src/startWars/interfaces/ICharacterUpdateModel"
+import { EpisodesEnum } from "../../enums/episodes.enum"
+import { injectToken } from "../../injectToken"
+import { IPaginationOptions } from "../../interfaces/IPaginationOptions"
+import { GetCharactersFilter } from "../../queryFilters/getCharactersFilter"
+import { CharacterRepositoryMock } from "../../repositories/character/CharacterRepository.mock"
+import { ICharacterRepository } from "../../repositories/character/ICharacterRepository"
+import { CharacterService } from "./CharacterService"
+import { ICharacterService } from "./ICharacterService"
 
 describe('CharacterService', () => {
     let characterService: ICharacterService
@@ -34,7 +34,7 @@ describe('CharacterService', () => {
 
         characterService = mockModule.get(injectToken.services.ICharacterService)
         characterRepository = mockModule.get(injectToken.repositories.ICharacterRepository)
-    });
+    })
 
     describe('getCharacters', () => {
         const characterId: string = '60dc4b85ca59964044f14eb8'
@@ -54,13 +54,13 @@ describe('CharacterService', () => {
             await characterService.getCharacters(paginationOptions, getCharactersFilter)
 
             expect(characterRepository.getCharacters).toBeCalledWith(paginationOptions, getCharactersFilter)
-        });
+        })
 
         it('characterRepository.getCharacterById shold be called with valid data', async () => {
-            await characterService.getCharacterById(characterId);
+            await characterService.getCharacterById(characterId)
 
             expect(characterRepository.getCharacterById).toBeCalledWith(characterId)
-        });
+        })
 
         it('characterRepository.updateCharacter shold be called with valid data', async () => {
             const characterUpdatetModel: ICharacterUpdatetModel = {
@@ -73,7 +73,7 @@ describe('CharacterService', () => {
             await characterService.updateCharacter(characterUpdatetModel, characterId)
 
             expect(characterRepository.updateCharacter).toBeCalledWith(characterUpdatetModel, characterId)
-        });
+        })
 
         it('characterRepository.insertCharacter shold be called with valid data', async () => {
             const characterInsertModel: ICharacterInsertModel = {
@@ -85,12 +85,12 @@ describe('CharacterService', () => {
             await characterService.insertCharacter(characterInsertModel)
 
             expect(characterRepository.insertCharacter).toBeCalledWith(characterInsertModel)
-        });
+        })
 
         it('characterRepository.deleteCharacter shold be called with valid data', async () => {
-            await characterService.deleteCharacter(characterId);
+            await characterService.deleteCharacter(characterId)
 
             expect(characterRepository.deleteCharacter).toBeCalledWith(characterId)
-        });
-    });
-});
+        })
+    })
+})

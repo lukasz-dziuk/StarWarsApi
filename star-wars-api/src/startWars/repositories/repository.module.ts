@@ -1,11 +1,11 @@
-import { ClassProvider, Module } from "@nestjs/common";
-import { MongooseModule } from '@nestjs/mongoose';
-import * as mongoose from 'mongoose';
-import { injectToken } from "../injectToken";
-import { CharacterRepository } from "./character/CharacterRepository";
-import { Schemas } from "./schemas";
-import { modelToken } from "./modelToken";
-import { DocumentMapperModule } from "../documentMappers/documentMapper.module";
+import { ClassProvider, Module } from "@nestjs/common"
+import { MongooseModule } from '@nestjs/mongoose'
+import * as mongoose from 'mongoose'
+import { injectToken } from "../injectToken"
+import { CharacterRepository } from "./character/CharacterRepository"
+import { Schemas } from "./schemas"
+import { modelToken } from "./modelToken"
+import { DocumentMapperModule } from "../documentMappers/documentMapper.module"
 
 const mongooseSchemas: mongooseSchemas[] = [
     { name: modelToken.Character, schema: Schemas.Character }

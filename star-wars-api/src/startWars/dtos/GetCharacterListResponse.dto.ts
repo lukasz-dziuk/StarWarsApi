@@ -1,5 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";;
-import { GetCharacterResponseDto } from "./GetCharacteResponse.dto";
+import { ApiProperty } from "@nestjs/swagger"
+import { GetCharacterResponseDto } from "./GetCharacteResponse.dto"
 
 
 export class GetCharacterListResponseDto {
@@ -27,7 +27,7 @@ export class GetCharacterListResponseDto {
             },
         ]
     })
-    readonly data: GetCharacterResponseDto[];
+    readonly data: GetCharacterResponseDto[]
 
     @ApiProperty({
         type: Number,

@@ -1,15 +1,15 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication, ValidationPipe } from '@nestjs/common';
-import { getModelToken } from '@nestjs/mongoose';
-import * as request from 'supertest';
-import { StarWarsAppModule } from '../src/startWars/startWarsApp.module';
-import { ICharacterDocument } from '../src/startWars/interfaces/ICharacter.document';
-import { Model, Types } from 'mongoose';
-import { EpisodesEnum } from '../src/startWars/enums/episodes.enum';
-import { ICharacterInsertModel } from '../src/startWars/interfaces/ICharacterInsertModel';
-import { IPagination } from '../src/startWars/interfaces/IPagination';
-import { ICharacter } from '../src/startWars/interfaces/ICharacter';
-import { modelToken } from '../src/startWars/repositories/modelToken';
+import { Test, TestingModule } from '@nestjs/testing'
+import { INestApplication, ValidationPipe } from '@nestjs/common'
+import { getModelToken } from '@nestjs/mongoose'
+import * as request from 'supertest'
+import { StarWarsAppModule } from '../src/startWars/startWarsApp.module'
+import { ICharacterDocument } from '../src/startWars/interfaces/ICharacter.document'
+import { Model, Types } from 'mongoose'
+import { EpisodesEnum } from '../src/startWars/enums/episodes.enum'
+import { ICharacterInsertModel } from '../src/startWars/interfaces/ICharacterInsertModel'
+import { IPagination } from '../src/startWars/interfaces/IPagination'
+import { ICharacter } from '../src/startWars/interfaces/ICharacter'
+import { modelToken } from '../src/startWars/repositories/modelToken'
 
 const characterOneId: string = Types.ObjectId().toHexString()
 const characterTwoId: string = Types.ObjectId().toHexString()
@@ -27,23 +27,23 @@ const characterTwo: ICharacterInsertModel = {
 }
 
 describe('CharacterController (e2e)', () => {
-  let app: INestApplication;
-  let characterModel: Model<ICharacterDocument>;
+  let app: INestApplication
+  let characterModel: Model<ICharacterDocument>
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [StarWarsAppModule.forRoot(true)],
       providers: []
     })
-      .compile();
-    app = moduleFixture.createNestApplication();
+      .compile()
+    app = moduleFixture.createNestApplication()
     app.useGlobalPipes(new ValidationPipe({ transform: true }))
-    await app.init();
+    await app.init()
 
-    characterModel = moduleFixture.get(getModelToken(modelToken.Character));
+    characterModel = moduleFixture.get(getModelToken(modelToken.Character))
     await clearCharacterTestData(characterModel)
     await setCharacterTestData(characterModel)
-  });
+  })
 
   describe('/character (GET)', () => {
     const paginatedResponseData: IPagination<ICharacter> = {
@@ -72,7 +72,7 @@ describe('CharacterController (e2e)', () => {
         .get('/character')
         .expect(200)
         .expect(paginatedResponseData)
-    });
+    })
 
     it(`/character (GET) should return data with one element when "limit" parameter equals 1`, () => {
       return request(app.getHttpServer())
@@ -85,15 +85,15 @@ describe('CharacterController (e2e)', () => {
             throw new Error("Wrong data length")
           }
         })
-    });
+    })
 
     it('/character (GET) should return status 400 when validation failed', () => {
       return request(app.getHttpServer())
         .get('/character')
         .query({ limit: '10', page: 'invalidPageNumber' })
         .expect(400)
-    });
-  });
+    })
+  })
 
   describe('/character/:id (GET)', () => {
 
@@ -108,7 +108,7 @@ describe('CharacterController (e2e)', () => {
         .get(`/character/${characterOneId}`)
         .expect(200)
         .expect(characterOne)
-    });
+    })
 
     it('/character/:id (GET) should return status 400 when id is not valid', () => {
       const wrongId: string = 'WRONG_ID'
@@ -116,7 +116,7 @@ describe('CharacterController (e2e)', () => {
       return request(app.getHttpServer())
         .get(`/character/${wrongId}`)
         .expect(400)
-    });
+    })
 
     it('/character/:id (GET) should return status 404 when character is not found', () => {
       const missingCharacterId: string = Types.ObjectId().toHexString()
@@ -124,8 +124,8 @@ describe('CharacterController (e2e)', () => {
       return request(app.getHttpServer())
         .get(`/character/${missingCharacterId}`)
         .expect(404)
-    });
-  });
+    })
+  })
 
   describe('/character (POST)', () => {
 
@@ -140,7 +140,7 @@ describe('CharacterController (e2e)', () => {
         .post(`/character`)
         .send(invalidNewCharacterRequestBody)
         .expect(400)
-    });
+    })
 
     it('/character (POST) should create a new character', async (done) => {
       const newCharacter: Omit<ICharacter, 'id'> = {
@@ -149,7 +149,7 @@ describe('CharacterController (e2e)', () => {
         planet: 'Ando'
       }
 
-      let newCharacterId: string;
+      let newCharacterId: string
 
       await request(app.getHttpServer())
         .post(`/character`)
@@ -164,7 +164,7 @@ describe('CharacterController (e2e)', () => {
             throw Error('response body must be a valid ObjectId')
           }
 
-          newCharacterId = returnedCharacterId;
+          newCharacterId = returnedCharacterId
         })
 
       await request(app.getHttpServer())
@@ -175,8 +175,8 @@ describe('CharacterController (e2e)', () => {
         })
 
       return done()
-    });
-  });
+    })
+  })
 
   describe('/character/:id (PATCH)', () => {
     const characterIdForUpdate: string = characterOneId
@@ -187,7 +187,7 @@ describe('CharacterController (e2e)', () => {
       return request(app.getHttpServer())
         .patch(`/character/${wrongId}`)
         .expect(400)
-    });
+    })
 
     it('/character/:id (PATCH) should return status 400 when request body is invalid', () => {
       const invalidUpdatedCharacterRequestBody: object = {
@@ -200,7 +200,7 @@ describe('CharacterController (e2e)', () => {
         .patch(`/character/${characterIdForUpdate}`)
         .send(invalidUpdatedCharacterRequestBody)
         .expect(400)
-    });
+    })
 
     it('/character/:id (PATCH) should update character', async (done) => {
 
@@ -226,8 +226,8 @@ describe('CharacterController (e2e)', () => {
         })
 
       return done()
-    });
-  });
+    })
+  })
 
   describe('/character/:id (DELETE)', () => {
 
@@ -237,10 +237,10 @@ describe('CharacterController (e2e)', () => {
       return request(app.getHttpServer())
         .delete(`/character/${wrongId}`)
         .expect(400)
-    });
+    })
 
     it('/character/:id (DELETE) should delete character', async (done) => {
-      const characterIdForDelete: string = characterOneId;
+      const characterIdForDelete: string = characterOneId
 
       await request(app.getHttpServer())
         .delete(`/character/${characterIdForDelete}`)
@@ -251,12 +251,12 @@ describe('CharacterController (e2e)', () => {
         .expect(404)
 
       return done()
-    });
-  });
-});
+    })
+  })
+})
 
 async function clearCharacterTestData(characterModel: Model<ICharacterDocument>): Promise<void> {
-  await characterModel.deleteMany();
+  await characterModel.deleteMany()
 }
 
 async function setCharacterTestData(characterModel: Model<ICharacterDocument>) {

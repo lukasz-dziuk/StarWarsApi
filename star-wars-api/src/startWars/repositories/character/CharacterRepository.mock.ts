@@ -7,4 +7,4 @@ export const CharacterRepositoryMock: ICharacterRepository = {
     insertCharacter: jest.fn(),
     deleteCharacter: jest.fn(),
     paginate: jest.fn()
-};
+}

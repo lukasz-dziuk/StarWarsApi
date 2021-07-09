@@ -1,8 +1,8 @@
-import { FilterQuery, Model as RepositoryModel, Document } from "mongoose";
-import { MathHelper } from "../../common/helpers/mathHelper/MathHelper";
-import { IPagination } from "../interfaces/IPagination";
-import { IPaginationOptions } from "../interfaces/IPaginationOptions";
-import { IRepositoryBase } from "./IRepositoryBase";
+import { FilterQuery, Model as RepositoryModel, Document } from "mongoose"
+import { MathHelper } from "../../common/helpers/mathHelper/MathHelper"
+import { IPagination } from "../interfaces/IPagination"
+import { IPaginationOptions } from "../interfaces/IPaginationOptions"
+import { IRepositoryBase } from "./IRepositoryBase"
 export abstract class RepositoryBase<TDocument extends Document> implements IRepositoryBase<TDocument> {
     public async paginate(
         model: RepositoryModel<TDocument>,

@@ -1,19 +1,19 @@
-import { getModelToken } from "@nestjs/mongoose";
-import { Test, TestingModule } from "@nestjs/testing";
-import { CharacterDocumentMapper } from "../../documentMappers/character/CharacterDocumentMapper";
-import { injectToken } from "../../injectToken";
-import { ICharacterRepository } from "../../repositories/character/ICharacterRepository";
-import { CharacterRepository } from "./CharacterRepository";
-import { ICharacterDocument } from "../../interfaces/ICharacter.document";
-import { EpisodesEnum } from "../../enums/episodes.enum";
-import { IPaginationOptions } from "../../interfaces/IPaginationOptions";
-import { GetCharactersFilter } from "../../queryFilters/getCharactersFilter";
-import { FilterQuery, Model as RepositoryModel } from "mongoose";
-import { ICharacter } from "src/startWars/interfaces/ICharacter";
-import { IPagination } from "src/startWars/interfaces/IPagination";
-import { ICharacterUpdatetModel } from "src/startWars/interfaces/ICharacterUpdateModel";
-import { NotFoundException } from "@nestjs/common";
-import { ICharacterInsertModel } from "src/startWars/interfaces/ICharacterInsertModel";
+import { getModelToken } from "@nestjs/mongoose"
+import { Test, TestingModule } from "@nestjs/testing"
+import { CharacterDocumentMapper } from "../../documentMappers/character/CharacterDocumentMapper"
+import { injectToken } from "../../injectToken"
+import { ICharacterRepository } from "../../repositories/character/ICharacterRepository"
+import { CharacterRepository } from "./CharacterRepository"
+import { ICharacterDocument } from "../../interfaces/ICharacter.document"
+import { EpisodesEnum } from "../../enums/episodes.enum"
+import { IPaginationOptions } from "../../interfaces/IPaginationOptions"
+import { GetCharactersFilter } from "../../queryFilters/getCharactersFilter"
+import { FilterQuery, Model as RepositoryModel } from "mongoose"
+import { ICharacter } from "src/startWars/interfaces/ICharacter"
+import { IPagination } from "src/startWars/interfaces/IPagination"
+import { ICharacterUpdatetModel } from "src/startWars/interfaces/ICharacterUpdateModel"
+import { NotFoundException } from "@nestjs/common"
+import { ICharacterInsertModel } from "src/startWars/interfaces/ICharacterInsertModel"
 
 describe('CharacterRepository', () => {
     interface IRepositoryModelFunctions {
@@ -30,7 +30,7 @@ describe('CharacterRepository', () => {
     let characterRepository: ICharacterRepository
 
     beforeEach(async () => {
-        jest.resetAllMocks();
+        jest.resetAllMocks()
         const dbModelMock: IRepositoryModelFunctions =
         {
             findById: jest.fn(),
@@ -61,9 +61,9 @@ describe('CharacterRepository', () => {
                 ],
             },
         ).compile()
-        characterRepositoryModel = mockModule.get(getModelToken('Character'));
-        characterRepository = mockModule.get(injectToken.repositories.ICharacterRepository);
-    });
+        characterRepositoryModel = mockModule.get(getModelToken('Character'))
+        characterRepository = mockModule.get(injectToken.repositories.ICharacterRepository)
+    })
 
     describe('getCharacterById', () => {
         const characterId: string = '60dc4b85ca59964044f14eb8'
@@ -75,19 +75,19 @@ describe('CharacterRepository', () => {
         }) as unknown) as ICharacterDocument
 
         it('characterRepositoryModel.findById shold be called with valid data', async () => {
-            await characterRepository.getCharacterById(characterId);
+            await characterRepository.getCharacterById(characterId)
 
-            expect(characterRepositoryModel.findById).toBeCalledWith(characterId);
-        });
+            expect(characterRepositoryModel.findById).toBeCalledWith(characterId)
+        })
 
         it('characterRepository.getCharacterById shold return valid data', async () => {
-            jest.spyOn(characterRepositoryModel, 'findById').mockResolvedValueOnce(characterDocument);
+            jest.spyOn(characterRepositoryModel, 'findById').mockResolvedValueOnce(characterDocument)
 
-            const result = await characterRepository.getCharacterById(characterId);
+            const result = await characterRepository.getCharacterById(characterId)
 
-            expect(result).toEqual(characterDocument);
-        });
-    });
+            expect(result).toEqual(characterDocument)
+        })
+    })
 
     describe('getCharacters', () => {
         const paginationOptions: IPaginationOptions = {
@@ -135,33 +135,33 @@ describe('CharacterRepository', () => {
 
         it('characterRepository.paginate shold be called with valid data', async () => {
 
-            jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel);
-            jest.spyOn(characterRepositoryModel, 'countDocuments').mockResolvedValueOnce(1);
-            jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel);
-            jest.spyOn(characterRepositoryModel, 'skip').mockReturnValueOnce(characterRepositoryModel);
-            jest.spyOn(characterRepositoryModel, 'limit').mockReturnValueOnce(characterDocumentsResult);
-            jest.spyOn(characterRepository, 'paginate').mockResolvedValueOnce(paginateResult);
-            await characterRepository.getCharacters(paginationOptions, getCharactersFilter);
+            jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel)
+            jest.spyOn(characterRepositoryModel, 'countDocuments').mockResolvedValueOnce(1)
+            jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel)
+            jest.spyOn(characterRepositoryModel, 'skip').mockReturnValueOnce(characterRepositoryModel)
+            jest.spyOn(characterRepositoryModel, 'limit').mockReturnValueOnce(characterDocumentsResult)
+            jest.spyOn(characterRepository, 'paginate').mockResolvedValueOnce(paginateResult)
+            await characterRepository.getCharacters(paginationOptions, getCharactersFilter)
 
             expect(characterRepository.paginate)
-                .toBeCalledWith(characterRepositoryModel, paginationOptions, mappedGetCharactersFilter);
-        });
+                .toBeCalledWith(characterRepositoryModel, paginationOptions, mappedGetCharactersFilter)
+        })
 
         it('characterRepository.getCharacters shold return valid data', async () => {
-            jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel);
-            jest.spyOn(characterRepositoryModel, 'countDocuments').mockResolvedValueOnce(1);
-            jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel);
-            jest.spyOn(characterRepositoryModel, 'skip').mockReturnValueOnce(characterRepositoryModel);
-            jest.spyOn(characterRepositoryModel, 'limit').mockReturnValueOnce(characterDocumentsResult);
-            jest.spyOn(characterRepository, 'paginate').mockResolvedValueOnce(paginateResult);
+            jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel)
+            jest.spyOn(characterRepositoryModel, 'countDocuments').mockResolvedValueOnce(1)
+            jest.spyOn(characterRepositoryModel, 'find').mockReturnValueOnce(characterRepositoryModel)
+            jest.spyOn(characterRepositoryModel, 'skip').mockReturnValueOnce(characterRepositoryModel)
+            jest.spyOn(characterRepositoryModel, 'limit').mockReturnValueOnce(characterDocumentsResult)
+            jest.spyOn(characterRepository, 'paginate').mockResolvedValueOnce(paginateResult)
 
             const results: IPagination<ICharacter> =
-                await characterRepository.getCharacters(paginationOptions, getCharactersFilter);
+                await characterRepository.getCharacters(paginationOptions, getCharactersFilter)
 
             expect(results)
-                .toEqual(paginateResult);
-        });
-    });
+                .toEqual(paginateResult)
+        })
+    })
 
     describe('updateCharacter', () => {
         const characterUpdatetModel: ICharacterUpdatetModel = {
@@ -174,12 +174,12 @@ describe('CharacterRepository', () => {
         const characterId: string = '60dc4b85ca59964044f14eb8'
 
         it('characterRepositoryModel.updateCharacter shold throw NotFoundException when character is not found', async () => {
-            jest.spyOn(characterRepositoryModel, 'findById').mockReturnValueOnce(null);
+            jest.spyOn(characterRepositoryModel, 'findById').mockReturnValueOnce(null)
 
             await expect(characterRepository.updateCharacter(characterUpdatetModel, characterId))
-                .rejects.toThrow(NotFoundException);
-        });
-    });
+                .rejects.toThrow(NotFoundException)
+        })
+    })
 
     describe('insertCharacter', () => {
         const characterId: string = '60dc4b85ca59964044f14eb8'
@@ -203,8 +203,8 @@ describe('CharacterRepository', () => {
             const newCharacterId: string = await characterRepository.insertCharacter(characterInsertModel)
 
             expect(newCharacterId).toEqual(characterId)
-        });
-    });
+        })
+    })
 
     describe('deleteCharacter', () => {
         const characterId: string = '60dc4b85ca59964044f14eb8'
@@ -213,6 +213,6 @@ describe('CharacterRepository', () => {
             await characterRepository.deleteCharacter(characterId)
 
             expect(characterRepositoryModel.deleteOne).toBeCalledWith({ _id: characterId })
-        });
-    });
-});
+        })
+    })
+})

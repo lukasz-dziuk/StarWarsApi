@@ -1,13 +1,13 @@
-import { Injectable, Inject } from "@nestjs/common";
-import { GetCharactersFilter } from "src/startWars/queryFilters/getCharactersFilter";
-import { injectToken } from "../../injectToken";
-import { ICharacter } from "../../interfaces/ICharacter";
-import { ICharacterInsertModel } from "../../interfaces/ICharacterInsertModel";
-import { ICharacterUpdatetModel } from "../../interfaces/ICharacterUpdateModel";
-import { IPagination } from "../../interfaces/IPagination";
-import { IPaginationOptions } from "../../interfaces/IPaginationOptions";
-import { ICharacterRepository } from "../../repositories/character/ICharacterRepository";
-import { ICharacterService } from "./ICharacterService";
+import { Injectable, Inject } from "@nestjs/common"
+import { GetCharactersFilter } from "src/startWars/queryFilters/getCharactersFilter"
+import { injectToken } from "../../injectToken"
+import { ICharacter } from "../../interfaces/ICharacter"
+import { ICharacterInsertModel } from "../../interfaces/ICharacterInsertModel"
+import { ICharacterUpdatetModel } from "../../interfaces/ICharacterUpdateModel"
+import { IPagination } from "../../interfaces/IPagination"
+import { IPaginationOptions } from "../../interfaces/IPaginationOptions"
+import { ICharacterRepository } from "../../repositories/character/ICharacterRepository"
+import { ICharacterService } from "./ICharacterService"
 
 
 @Injectable()

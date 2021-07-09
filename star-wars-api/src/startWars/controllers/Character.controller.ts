@@ -1,22 +1,22 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Inject, Param, Patch, Post, Query, UsePipes } from "@nestjs/common";
-import { ApiBadRequestResponse, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { GetCharacterListRequestDto } from "../dtos/GetCharacterListRequest.dto";
-import { InsertCharacterRequestDto } from "../dtos/InsertCharacterRequest.dto";
-import { UpdateCharacterRequestDto } from "../dtos/UpdateCharacterRequest.dto";
-import { injectToken } from "../injectToken";
-import { ICharacterInsertModel } from "../interfaces/ICharacterInsertModel";
-import { ICharacterUpdatetModel } from "../interfaces/ICharacterUpdateModel";
-import { IPaginationOptions } from "../interfaces/IPaginationOptions";
-import { ICharacterService } from "../services/characterService/ICharacterService";
-import { GetCharacterListResponseDto } from "../dtos/GetCharacterListResponse.dto";
-import { GetCharacterResponseDto } from "../dtos/GetCharacteResponse.dto";
-import { ValidateObjectIdPipe } from "../../common/transformPipes/ValidateObjectIdPipe";
-import { InsertCharacterResponseDto } from "../dtos/InsertCharacterResponse.dto";
-import { ICharacter } from "../interfaces/ICharacter";
-import { ICharacterDtoMapper } from "../dtoMappers/character/ICharacterDtoMapper";
-import { IPagination } from "../interfaces/IPagination";
-import { GetCharactersFilter } from "../queryFilters/getCharactersFilter";
-import { DefaultPaginationOptionsPipe } from "../../common/transformPipes/DefaultPaginationOptionsPipe";
+import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Inject, Param, Patch, Post, Query, UsePipes } from "@nestjs/common"
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger"
+import { GetCharacterListRequestDto } from "../dtos/GetCharacterListRequest.dto"
+import { InsertCharacterRequestDto } from "../dtos/InsertCharacterRequest.dto"
+import { UpdateCharacterRequestDto } from "../dtos/UpdateCharacterRequest.dto"
+import { injectToken } from "../injectToken"
+import { ICharacterInsertModel } from "../interfaces/ICharacterInsertModel"
+import { ICharacterUpdatetModel } from "../interfaces/ICharacterUpdateModel"
+import { IPaginationOptions } from "../interfaces/IPaginationOptions"
+import { ICharacterService } from "../services/characterService/ICharacterService"
+import { GetCharacterListResponseDto } from "../dtos/GetCharacterListResponse.dto"
+import { GetCharacterResponseDto } from "../dtos/GetCharacteResponse.dto"
+import { ValidateObjectIdPipe } from "../../common/transformPipes/ValidateObjectIdPipe"
+import { InsertCharacterResponseDto } from "../dtos/InsertCharacterResponse.dto"
+import { ICharacter } from "../interfaces/ICharacter"
+import { ICharacterDtoMapper } from "../dtoMappers/character/ICharacterDtoMapper"
+import { IPagination } from "../interfaces/IPagination"
+import { GetCharactersFilter } from "../queryFilters/getCharactersFilter"
+import { DefaultPaginationOptionsPipe } from "../../common/transformPipes/DefaultPaginationOptionsPipe"
 
 @ApiTags('StarWars')
 @Controller('character')
@@ -26,7 +26,7 @@ export class CharacterController {
         @Inject(injectToken.dtoMappers.ICharacterDtoMapper) private _characterDtoMapper: ICharacterDtoMapper) { }
 
     @ApiOkResponse({ description: 'Character list has been successfully returned.', type: GetCharacterListResponseDto })
-    @ApiBadRequestResponse({ description: 'Invalid Request', type: GetCharacterResponseDto })
+    @ApiBadRequestResponse({ description: 'Invalid Request' })
     @UsePipes(new DefaultPaginationOptionsPipe())
     @Get()
     public async getCharacterList(
@@ -50,7 +50,7 @@ export class CharacterController {
     }
 
     @ApiOkResponse({ description: 'Character list has been successfully returned.', type: GetCharacterResponseDto })
-    @ApiBadRequestResponse({ description: 'Invalid id', type: GetCharacterResponseDto })
+    @ApiBadRequestResponse({ description: 'Invalid id' })
     @ApiNotFoundResponse({ description: `Character for the given id doesn't exists` })
     @ApiParam({ name: 'id', type: String })
     @Get('/:id')
@@ -62,7 +62,7 @@ export class CharacterController {
         if (character) {
             const getCharacterResponseDto: GetCharacterResponseDto =
                 this._characterDtoMapper.mapGetCharacterResponseDto(character)
-            return getCharacterResponseDto;
+            return getCharacterResponseDto
         }
 
         throw new HttpException(`Character for the id ${characterId} is not found`, HttpStatus.NOT_FOUND)

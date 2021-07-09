@@ -1,9 +1,9 @@
-import { GetCharactersFilter } from "src/startWars/queryFilters/getCharactersFilter";
-import { ICharacter } from "../../interfaces/ICharacter";
-import { ICharacterInsertModel } from "../../interfaces/ICharacterInsertModel";
-import { ICharacterUpdatetModel } from "../../interfaces/ICharacterUpdateModel";
-import { IPagination } from "../../interfaces/IPagination";
-import { IPaginationOptions } from "../../interfaces/IPaginationOptions";
+import { GetCharactersFilter } from "src/startWars/queryFilters/getCharactersFilter"
+import { ICharacter } from "../../interfaces/ICharacter"
+import { ICharacterInsertModel } from "../../interfaces/ICharacterInsertModel"
+import { ICharacterUpdatetModel } from "../../interfaces/ICharacterUpdateModel"
+import { IPagination } from "../../interfaces/IPagination"
+import { IPaginationOptions } from "../../interfaces/IPaginationOptions"
 
 export interface ICharacterService {
     getCharacters(paginationOptions: IPaginationOptions, filter?: GetCharactersFilter): Promise<IPagination<ICharacter>>

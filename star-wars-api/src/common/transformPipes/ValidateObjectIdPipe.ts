@@ -1,5 +1,5 @@
-import { Injectable, BadRequestException, PipeTransform } from '@nestjs/common';
-import { Types } from 'mongoose';
+import { Injectable, BadRequestException, PipeTransform } from '@nestjs/common'
+import { Types } from 'mongoose'
 
 @Injectable()
 export class ValidateObjectIdPipe implements PipeTransform<any, string> {

@@ -1,10 +1,10 @@
-import { DynamicModule, Module } from "@nestjs/common";
-import { CharacterController } from "./controllers/Character.controller";
-import { RepositoryModule } from "./repositories/repository.module";
-import { MongooseModule } from "@nestjs/mongoose";
-import { ServiceModule } from "./services/service.module";
-import * as dotenv from 'dotenv';
-import { DtoMapperModule } from "./dtoMappers/dtoMappers.module";
+import { DynamicModule, Module } from "@nestjs/common"
+import { CharacterController } from "./controllers/Character.controller"
+import { RepositoryModule } from "./repositories/repository.module"
+import { MongooseModule } from "@nestjs/mongoose"
+import { ServiceModule } from "./services/service.module"
+import * as dotenv from 'dotenv'
+import { DtoMapperModule } from "./dtoMappers/dtoMappers.module"
 
 @Module({})
 export class StarWarsAppModule {

@@ -1,6 +1,6 @@
-import { ApiPropertyOptional } from "@nestjs/swagger";
-import { IsArray, IsEnum, IsOptional, IsString } from "class-validator";
-import { EpisodesEnum } from "../enums/episodes.enum";
+import { ApiPropertyOptional } from "@nestjs/swagger"
+import { IsArray, IsEnum, IsOptional, IsString } from "class-validator"
+import { EpisodesEnum } from "../enums/episodes.enum"
 
 export class UpdateCharacterRequestDto {
     @ApiPropertyOptional({

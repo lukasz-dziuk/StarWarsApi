@@ -1,8 +1,8 @@
-import { EpisodesEnum } from "../enums/episodes.enum";
+import { EpisodesEnum } from "../enums/episodes.enum"
 
 export interface ICharacter {
-    id: string;
-    name: string;
-    episodes: EpisodesEnum[];
-    planet?: string;
+    id: string
+    name: string
+    episodes: EpisodesEnum[]
+    planet?: string
 }

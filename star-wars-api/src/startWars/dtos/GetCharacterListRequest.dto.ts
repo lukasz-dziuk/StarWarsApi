@@ -1,7 +1,7 @@
-import { ApiPropertyOptional } from "@nestjs/swagger";
-import { Type } from "class-transformer";
-import { IsArray, IsEnum, IsNumber, IsOptional, IsString, Min } from "class-validator";
-import { EpisodesEnum } from "../enums/episodes.enum";
+import { ApiPropertyOptional } from "@nestjs/swagger"
+import { Type } from "class-transformer"
+import { IsArray, IsEnum, IsNumber, IsOptional, IsString, Min } from "class-validator"
+import { EpisodesEnum } from "../enums/episodes.enum"
 
 export class GetCharacterListRequestDto {
     @ApiPropertyOptional({

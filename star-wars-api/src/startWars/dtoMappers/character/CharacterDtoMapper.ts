@@ -1,9 +1,9 @@
-import { GetCharacterResponseDto } from "src/startWars/dtos/GetCharacteResponse.dto";
-import { GetCharacterListResponseDto } from "src/startWars/dtos/GetCharacterListResponse.dto";
-import { InsertCharacterResponseDto } from "src/startWars/dtos/InsertCharacterResponse.dto";
-import { ICharacter } from "src/startWars/interfaces/ICharacter";
-import { IPagination } from "src/startWars/interfaces/IPagination";
-import { ICharacterDtoMapper } from "./ICharacterDtoMapper";
+import { GetCharacterResponseDto } from "src/startWars/dtos/GetCharacteResponse.dto"
+import { GetCharacterListResponseDto } from "src/startWars/dtos/GetCharacterListResponse.dto"
+import { InsertCharacterResponseDto } from "src/startWars/dtos/InsertCharacterResponse.dto"
+import { ICharacter } from "src/startWars/interfaces/ICharacter"
+import { IPagination } from "src/startWars/interfaces/IPagination"
+import { ICharacterDtoMapper } from "./ICharacterDtoMapper"
 
 export class CharacterDtoMapper implements ICharacterDtoMapper {
     public mapInsertCharacterResponseDto(characterId: string): InsertCharacterResponseDto {

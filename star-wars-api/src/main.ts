@@ -1,7 +1,7 @@
-import { ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common'
+import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
-import { StarWarsAppModule } from './startWars/startWarsApp.module';
+import { StarWarsAppModule } from './startWars/startWarsApp.module'
 
 async function bootstrap() {
   const app = await NestFactory.create(StarWarsAppModule.forRoot(false))
@@ -19,4 +19,5 @@ async function bootstrap() {
 
   await app.listen(process.env.SERVER_PORT ?? 3000)
 }
-bootstrap();
+
+bootstrap()

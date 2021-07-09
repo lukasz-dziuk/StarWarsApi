@@ -1,5 +1,5 @@
-import { Injectable, PipeTransform } from '@nestjs/common';
-import { IPaginationOptions } from 'src/startWars/interfaces/IPaginationOptions';
+import { Injectable, PipeTransform } from '@nestjs/common'
+import { IPaginationOptions } from 'src/startWars/interfaces/IPaginationOptions'
 
 @Injectable()
 export class DefaultPaginationOptionsPipe implements PipeTransform<any, string> {

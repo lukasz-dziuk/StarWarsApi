@@ -1,5 +1,5 @@
-import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
-import { EpisodesEnum } from "../enums/episodes.enum";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger"
+import { EpisodesEnum } from "../enums/episodes.enum"
 
 export class GetCharacterResponseDto {
     @ApiProperty({

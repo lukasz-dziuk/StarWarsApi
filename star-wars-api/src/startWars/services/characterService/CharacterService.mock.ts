@@ -1,4 +1,4 @@
-import { ICharacterService } from './ICharacterService';
+import { ICharacterService } from './ICharacterService'
 
 export const CharacterServiceMock: ICharacterService = {
     getCharacters: jest.fn(),
@@ -6,4 +6,4 @@ export const CharacterServiceMock: ICharacterService = {
     updateCharacter: jest.fn(),
     insertCharacter: jest.fn(),
     deleteCharacter: jest.fn()
-};
+}
